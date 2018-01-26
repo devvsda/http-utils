@@ -63,14 +63,8 @@ public class HttpGetMethod extends HttpMethod {
 
         // getRequest.releaseConnection();
 
+        log.info(String.format("Post request : %s", getRequest));
+
         return getRequest;
-    }
-
-    private <T> T getResponse(HttpEntity httpEntity, Class<T> clazz) throws IOException {
-
-        InputStream inputStream = httpEntity.getContent();
-
-        return ObjectBuilder.build(inputStream, clazz);
-
     }
 }
