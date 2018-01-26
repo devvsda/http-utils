@@ -5,7 +5,7 @@ import com.devsda.utils.httputils.HttpMethod;
 import java.net.URL;
 import java.util.Map;
 
-public class HttpPutMethod implements HttpMethod {
+public class HttpPutMethod {
 
     public void call(String hostname, String port, Map<String, String> headers, Map<String, Object> body) {
 
