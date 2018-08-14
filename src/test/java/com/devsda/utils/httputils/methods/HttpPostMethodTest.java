@@ -39,19 +39,20 @@ public class HttpPostMethodTest {
         log.info("Tearing down test environment.");
     }
 
+    @Ignore
     @Test
     public void postMethodTest() throws JsonProcessingException, URISyntaxException, IOException {
 
         String hostname = "127.0.0.1";
         String port = "8080";
-        String path = "/shephard-manager/healthCheck";
+        String path = "/dominos-shepherd-client/order-management-workflow/validateOrder";
 
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "application/json");
 
-        String body = JsonLoader.loadObject(new DummyClass("inqalab-zindabad"));
+        String body = ""; // JsonLoader.loadObject(new DummyClass("inqalab-zindabad"));
 
-        System.out.println(httpPostMethod.call(hostname, port, path, null, headers, body, HealthCheck.class));
+        System.out.println(httpPostMethod.call(hostname, port, path, null, headers, body, String.class));
     }
 
     class DummyClass {

@@ -1,13 +1,13 @@
 package com.devsda.utils.httputils;
 
-import com.devsda.utils.httputils.util.ObjectBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpMessage;
 import org.apache.http.HttpRequest;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -54,10 +54,13 @@ public abstract class HttpMethod {
 
     public <T> T getResponse(HttpEntity httpEntity, Class<T> clazz) throws IOException {
 
-        InputStream inputStream = httpEntity.getContent();
+        String response = EntityUtils.toString(httpEntity);
 
-        return ObjectBuilder.build(inputStream, clazz);
+        if(String.class.equals(clazz)) {
+            return (T) response;
+        }
 
+        return new ObjectMapper().readValue(response, clazz);
     }
     
 }

@@ -38,6 +38,7 @@ public class HttpGetMethodTest {
         log.info("Tearing down test environment.");
     }
 
+    @Ignore
     @Test
     public void httpGetMethodTest() throws URISyntaxException, IOException {
 
