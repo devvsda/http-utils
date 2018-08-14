@@ -38,6 +38,7 @@ public class HttpGetMethodTest {
         log.info("Tearing down test environment.");
     }
 
+    @Ignore
     @Test
     public void httpGetMethodTest() throws URISyntaxException, IOException {
 
@@ -58,5 +59,6 @@ public class HttpGetMethodTest {
         HealthCheck healthCheck = httpGetMethod.call(hostname, port, path, parameters, headers, body, HealthCheck.class);
 
         System.out.println(healthCheck);
+
     }
 }

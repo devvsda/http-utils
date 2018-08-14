@@ -1,0 +1,8 @@
+com/devsda/utils/httputils/loader/JsonLoaderTest.class
+com/devsda/utils/httputils/util/ObjectBuilderTest.class
+com/devsda/utils/httputils/DummyClass.class
+com/devsda/utils/httputils/models/HealthCheck.class
+com/devsda/utils/httputils/methods/HttpGetMethodTest.class
+MongoClientTest.class
+com/devsda/utils/httputils/methods/HttpPostMethodTest.class
+com/devsda/utils/httputils/methods/HttpPostMethodTest$DummyClass.class
