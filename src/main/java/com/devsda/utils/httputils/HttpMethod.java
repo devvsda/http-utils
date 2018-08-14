@@ -1,6 +1,5 @@
 package com.devsda.utils.httputils;
 
-import com.devsda.utils.httputils.util.ObjectBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpMessage;
@@ -9,7 +8,6 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -63,7 +61,6 @@ public abstract class HttpMethod {
         }
 
         return new ObjectMapper().readValue(response, clazz);
-
     }
     
 }

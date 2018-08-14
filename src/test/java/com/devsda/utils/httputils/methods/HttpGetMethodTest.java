@@ -59,6 +59,5 @@ public class HttpGetMethodTest {
         HealthCheck healthCheck = httpGetMethod.call(hostname, port, path, parameters, headers, body, HealthCheck.class);
 
         System.out.println(healthCheck);
-
     }
 }

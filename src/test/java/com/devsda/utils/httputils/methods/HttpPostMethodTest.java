@@ -39,7 +39,7 @@ public class HttpPostMethodTest {
         log.info("Tearing down test environment.");
     }
 
-    // @Ignore
+    @Ignore
     @Test
     public void postMethodTest() throws JsonProcessingException, URISyntaxException, IOException {
 
