@@ -1,8 +1,0 @@
-com/devsda/utils/httputils/constants/HttpContants.class
-com/devsda/utils/httputils/methods/HttpPostMethod.class
-com/devsda/utils/httputils/HttpMethod.class
-com/devsda/utils/httputils/loader/JsonLoader.class
-com/devsda/utils/httputils/methods/HttpPutMethod.class
-com/devsda/utils/httputils/methods/HttpGetMethod.class
-com/devsda/utils/httputils/exceptions/HttpUtilsInternalException.class
-com/devsda/utils/httputils/util/ObjectBuilder.class
