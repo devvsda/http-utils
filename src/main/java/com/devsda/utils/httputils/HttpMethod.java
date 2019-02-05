@@ -1,5 +1,6 @@
 package com.devsda.utils.httputils;
 
+import com.devsda.utils.httputils.constants.Protocol;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpMessage;
@@ -16,11 +17,11 @@ import java.util.Map;
 
 public abstract class HttpMethod {
 
-    public abstract <T> T call(String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, String body, Class<T> clazz) throws URISyntaxException, IOException;
+    public abstract <T> T call(Protocol scheme, String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, HttpEntity body, Class<T> clazz) throws URISyntaxException, IOException;
 
     public abstract void call(URL url, Map<String, String> headers, String body);
 
-    protected abstract HttpRequest buildRequest(String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, String body) throws URISyntaxException, UnsupportedEncodingException;
+    protected abstract HttpRequest buildRequest(Protocol scheme, String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, HttpEntity body) throws URISyntaxException, UnsupportedEncodingException;
 
     public void addHeaders(HttpMessage httpMessage, Map<String, String> headers) {
 
@@ -34,11 +35,17 @@ public abstract class HttpMethod {
 
     }
 
-    public URI buildURI(String hostname, String port, String path, Map<String, String> parameters) throws URISyntaxException {
+    public URI buildURI(String scheme, String hostname, String port, String path, Map<String, String> parameters) throws URISyntaxException {
 
         URIBuilder uriBuilder = new URIBuilder();
 
-        uriBuilder.setScheme("http").setHost(hostname).setPort(Integer.valueOf(port)).setPath(path);
+        uriBuilder.setScheme(scheme).setHost(hostname);
+
+        if (port != null) {
+            uriBuilder.setPort(Integer.valueOf(port));
+        }
+
+        uriBuilder.setPath(path);
 
         if(parameters == null) {
             return uriBuilder.build();

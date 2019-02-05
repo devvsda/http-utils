@@ -1,6 +1,8 @@
 package com.devsda.utils.httputils.methods;
 
 import com.devsda.utils.httputils.HttpMethod;
+import com.devsda.utils.httputils.constants.Protocol;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -24,11 +26,11 @@ public class HttpPostMethod extends HttpMethod {
 
     private static final Logger log = LoggerFactory.getLogger(HttpPostMethod.class);
 
-    public <T> T call(String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, String body, Class<T> clazz) throws URISyntaxException, IOException {
+    public <T> T call(Protocol scheme, String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, HttpEntity body, Class<T> clazz) throws URISyntaxException, IOException {
 
         HttpClient httpClient = HttpClientBuilder.create().build();
 
-        HttpRequest postRequest = buildRequest(hostname, port, path, parameters, headers, body);
+        HttpRequest postRequest = buildRequest(scheme, hostname, port, path, parameters, headers, body);
 
         HttpResponse httpResponse = httpClient.execute((HttpUriRequest) postRequest);
 
@@ -46,11 +48,11 @@ public class HttpPostMethod extends HttpMethod {
 
     }
 
-    protected HttpRequest buildRequest(String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, String body) throws URISyntaxException, UnsupportedEncodingException {
+    protected HttpRequest buildRequest(Protocol scheme, String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, HttpEntity body) throws URISyntaxException, UnsupportedEncodingException {
 
         HttpPost postRequest = new HttpPost();
 
-        URI uri = buildURI(hostname, port, path, parameters);
+        URI uri = buildURI(scheme.getProtocol(), hostname, port, path, parameters);
 
         log.info(String.format("URI : %s", uri.toString()));
 
@@ -58,7 +60,7 @@ public class HttpPostMethod extends HttpMethod {
 
         addHeaders(postRequest, headers);
 
-        postRequest.setEntity(new StringEntity(body)/*new ByteArrayEntity(body.getBytes("UTF-8"))*/);
+        postRequest.setEntity(body/*new ByteArrayEntity(body.getBytes("UTF-8"))*/);
 
         log.info(String.format("Post request : %s", postRequest));
 
