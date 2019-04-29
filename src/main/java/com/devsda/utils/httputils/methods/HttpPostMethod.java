@@ -28,6 +28,8 @@ public class HttpPostMethod extends HttpMethod {
 
     public <T> T call(Protocol scheme, String hostname, String port, String path, Map<String, String> parameters, Map<String, String> headers, HttpEntity body, Class<T> clazz) throws URISyntaxException, IOException {
 
+        log.info(String.format("Requesting post call to server : %s", hostname));
+
         HttpClient httpClient = HttpClientBuilder.create().build();
 
         HttpRequest postRequest = buildRequest(scheme, hostname, port, path, parameters, headers, body);
@@ -40,6 +42,8 @@ public class HttpPostMethod extends HttpMethod {
             log.info(String.format("Status : %s", httpResponse.getStatusLine()));
             throw new HttpResponseException(status, "Failed to execute post request");
         }
+
+        log.info(String.format("Successfully got response from server : %s", hostname));
 
         return getResponse(httpResponse.getEntity(), clazz);
     }

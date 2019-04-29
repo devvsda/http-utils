@@ -18,35 +18,35 @@ public void setup() {
     System.out.println("Nothing to setup here");
 }
 
-    @Ignore
-    @Test
-    public void connectMongoDB() {
+        @Ignore
+        @Test
+        public void connectMongoDB() {
 
 
-        String mongoUrl = "mongodb://miqapi-staging:XFDNTjgVxyypttzkLL0NtfOsdgs3eydV6T1YFiaOZDFfbTh6SuKSbJzq8rFBQ8uGOPusU8gOzGBb3NIunVJ0eA==@miqapi-staging.documents.azure.com:10255/azure-staging?ssl=true&replicaSet=globaldb";
+            String mongoUrl = "mongodb://miqapi-staging:XFDNTjgVxyypttzkLL0NtfOsdgs3eydV6T1YFiaOZDFfbTh6SuKSbJzq8rFBQ8uGOPusU8gOzGBb3NIunVJ0eA==@miqapi-staging.documents.azure.com:10255/azure-staging?ssl=true&replicaSet=globaldb";
 
-        MongoClientURI mongoClientURI = new MongoClientURI(mongoUrl);
+            MongoClientURI mongoClientURI = new MongoClientURI(mongoUrl);
 
-        MongoClient mongoClient = new MongoClient(mongoClientURI);
-
-
-        MongoDatabase mongoDatabase = mongoClient.getDatabase("azure-staging");
-
-        System.out.println(mongoDatabase.getName());
-
-        MongoCollection<Document> documentMongoCollection = mongoDatabase.getCollection("email_verification");
+            MongoClient mongoClient = new MongoClient(mongoClientURI);
 
 
-        System.out.println(documentMongoCollection.getNamespace());
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("azure-staging");
 
-        Document document = new Document("_id", new ObjectId("5a66dfeb59438e000d69e7e7"));
+            System.out.println(mongoDatabase.getName());
 
-        System.out.println(document);
+            MongoCollection<Document> documentMongoCollection = mongoDatabase.getCollection("email_verification");
 
-        FindIterable<Document> documentMongoCursor = documentMongoCollection.find(document);
 
-        Document targetDocument = documentMongoCursor.first();
+            System.out.println(documentMongoCollection.getNamespace());
 
-        System.out.println(targetDocument.get("secret"));
-    }*/
+            Document document = new Document("_id", new ObjectId("5a66dfeb59438e000d69e7e7"));
+
+            System.out.println(document);
+
+            FindIterable<Document> documentMongoCursor = documentMongoCollection.find(document);
+
+            Document targetDocument = documentMongoCursor.first();
+
+            System.out.println(targetDocument.get("secret"));
+        }*/
 }
