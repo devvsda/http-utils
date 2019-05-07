@@ -9,8 +9,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +36,7 @@ public class HttpPostMethod extends HttpMethod {
 
         int status = httpResponse.getStatusLine().getStatusCode();
 
-        if( status != 200)  {
+        if (status != 200) {
             log.info(String.format("Status : %s", httpResponse.getStatusLine()));
             throw new HttpResponseException(status, "Failed to execute post request");
         }

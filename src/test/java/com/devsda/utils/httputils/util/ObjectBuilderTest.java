@@ -18,7 +18,6 @@ public class ObjectBuilderTest {
     public void buildTest() throws JsonProcessingException, UnsupportedEncodingException, IOException {
 
 
-
         HealthCheck healthCheck = new HealthCheck();
         healthCheck.setEchoString("Inqalab-Zindabad!!");
         healthCheck.setHostName("World");

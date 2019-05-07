@@ -24,7 +24,7 @@ public class JsonLoader {
 
         File file = new File(fileName);
 
-        if (!file.exists() || file.isDirectory() ) {
+        if (!file.exists() || file.isDirectory()) {
             throw new HttpUtilsInternalException(String.format("File either missing or not in file format. File name : %s", fileName));
         }
 

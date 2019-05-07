@@ -2,9 +2,7 @@ package com.devsda.utils.httputils.methods;
 
 import com.devsda.utils.httputils.HttpMethod;
 import com.devsda.utils.httputils.constants.Protocol;
-import com.devsda.utils.httputils.util.ObjectBuilder;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -16,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -39,7 +36,7 @@ public class HttpGetMethod extends HttpMethod {
 
         int statusCode = response.getStatusLine().getStatusCode();
 
-        if(statusCode != 200) {
+        if (statusCode != 200) {
             throw new HttpResponseException(statusCode, "Failed to get response");
         }
 

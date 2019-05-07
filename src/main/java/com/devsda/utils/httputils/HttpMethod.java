@@ -25,11 +25,11 @@ public abstract class HttpMethod {
 
     public void addHeaders(HttpMessage httpMessage, Map<String, String> headers) {
 
-        if(headers == null) {
+        if (headers == null) {
             return;
         }
 
-        for(Map.Entry<String, String> thisHeader : headers.entrySet()) {
+        for (Map.Entry<String, String> thisHeader : headers.entrySet()) {
             httpMessage.addHeader(thisHeader.getKey(), thisHeader.getValue());
         }
 
@@ -47,11 +47,11 @@ public abstract class HttpMethod {
 
         uriBuilder.setPath(path);
 
-        if(parameters == null) {
+        if (parameters == null) {
             return uriBuilder.build();
         }
 
-        for(Map.Entry<String, String> thisParameter : parameters.entrySet()) {
+        for (Map.Entry<String, String> thisParameter : parameters.entrySet()) {
             uriBuilder.setParameter(thisParameter.getKey(), thisParameter.getValue());
         }
 
@@ -63,11 +63,11 @@ public abstract class HttpMethod {
 
         String response = EntityUtils.toString(httpEntity);
 
-        if(String.class.equals(clazz)) {
+        if (String.class.equals(clazz)) {
             return (T) response;
         }
 
         return new ObjectMapper().readValue(response, clazz);
     }
-    
+
 }
