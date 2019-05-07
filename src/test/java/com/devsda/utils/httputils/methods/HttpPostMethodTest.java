@@ -1,9 +1,6 @@
 package com.devsda.utils.httputils.methods;
 
 import com.devsda.utils.httputils.constants.Protocol;
-import com.devsda.utils.httputils.loader.JsonLoader;
-import com.devsda.utils.httputils.models.HealthCheck;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.http.entity.FileEntity;
 import org.apache.http.entity.StringEntity;
 import org.junit.*;

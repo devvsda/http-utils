@@ -11,19 +11,19 @@ public enum Protocol {
         this.protocol = protocol;
     }
 
-    public String getProtocol() {
-        return protocol;
-    }
-
     public static Protocol getProtocol(String protocol) {
 
-        if ("https".equalsIgnoreCase(protocol)){
+        if ("https".equalsIgnoreCase(protocol)) {
             return Protocol.HTTPS;
         } else if ("http".equalsIgnoreCase(protocol)) {
             return Protocol.HTTP;
         } else {
             throw new IllegalArgumentException(String.format("Wrong protocol value : %s", protocol));
         }
+    }
+
+    public String getProtocol() {
+        return protocol;
     }
 
     @Override

@@ -1,10 +1,8 @@
 package com.devsda.utils.httputils.loader;
 
 import com.devsda.utils.httputils.DummyClass;
-
 import com.devsda.utils.httputils.models.HealthCheck;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;

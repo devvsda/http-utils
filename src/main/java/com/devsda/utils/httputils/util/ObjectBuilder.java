@@ -7,7 +7,7 @@ import java.io.InputStream;
 
 public class ObjectBuilder {
 
-    public static <T> T  build(InputStream inputStream, Class<T> clazz) throws IOException {
+    public static <T> T build(InputStream inputStream, Class<T> clazz) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         T object = objectMapper.readValue(inputStream, clazz);
         return object;
